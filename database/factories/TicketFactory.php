@@ -1,7 +1,5 @@
 <?php
-
 use Faker\Generator as Faker;
-
 /*
 |--------------------------------------------------------------------------
 | Model Factories
@@ -12,13 +10,9 @@ use Faker\Generator as Faker;
 | model instances for testing / seeding your application's database.
 |
 */
-
-$factory->define(App\Models\User::class, function (Faker $faker) {
+$factory->define(App\Models\Ticket::class, function (Faker $faker) {
     return [
-        'name' => $faker->name,
-        'email' => $faker->unique()->safeEmail,
-        'email_verified_at' => now(),
-        'password' => $faker->password,
-        'remember_token' => str_random(10),
+        'title' => $faker->word,
+        'content' => $faker->sentence
     ];
 });
