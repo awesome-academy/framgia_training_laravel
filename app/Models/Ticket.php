@@ -1,7 +1,8 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
+use App\Models\Comment;
 use Illuminate\Database\Eloquent\Model;
 
 class Ticket extends Model
