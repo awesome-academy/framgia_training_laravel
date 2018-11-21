@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -12,5 +12,5 @@ class Ticket extends Model
         'slug',
         'status',
         'user_id'
-    ]
+    ];
 }

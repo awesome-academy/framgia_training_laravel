@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -11,5 +11,5 @@ class Comment extends Model
         'post_id',
         'user_id',
         'status'
-    ]
+    ];
 }
