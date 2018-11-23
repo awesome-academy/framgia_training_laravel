@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Admin Control Panel</title>
+    <title>@yield('title', 'Admin Control Panel')</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="{{ asset('admin/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
@@ -22,6 +22,9 @@
 
     <!-- Custom Fonts -->
     <link href="{{ asset('admin/vendor/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css">
+
+    @section('header')
+    @show
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -60,8 +63,12 @@
                         <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="#"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            <i class="fa fa-sign-out fa-fw"></i> Logout</a>
                         </li>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
                     </ul>
                     <!-- /.dropdown-user -->
                 </li>
@@ -89,6 +96,9 @@
                         <li>
                             <a href=""><i class="fa fa-list fa-fw"></i> Tickets</a>
                         </li>
+                        <li>
+                            <a href="{{ route('admin.users.index') }}"><i class="fa fa-list fa-fw"></i> Users</a>
+                        </li>
                         <!-- <li>
                             <a href="#"><i class="fa fa-wrench fa-fw"></i> UI Elements<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
@@ -112,7 +122,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">Blank</h1>
+                        @yield('content')
                     </div>
                     <!-- /.col-lg-12 -->
                 </div>
@@ -136,6 +146,9 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="{{ asset('admin/dist/js/sb-admin-2.min.js')}}"></script>
+
+    @section('footer')
+    @show
 
 </body>
 
