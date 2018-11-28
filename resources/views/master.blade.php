@@ -50,7 +50,7 @@
                     @if (Route::has('login'))
                         @auth
                             <li class = "dropdown">
-                                <a href="{{ url('/home') }}">trans('messages.home')</a>
+                                <a href="{{ url('/home') }}">{{  trans('messages.home') }}</a>
                             </li>    
                         @else
                             <li class = "dropdown">
