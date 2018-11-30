@@ -19,5 +19,8 @@ return [
     'edit_c' => 'Edit Comfirm Password',
     'i' => 'ID:',
     'ac' => 'Action:',
+    'delete_t' => 'Delete ticket success',
+    'setting_success_t' => 'Setting ticket success',
+    'create_success_t' => 'Create ticket success',
 
 ];
