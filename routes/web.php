@@ -21,4 +21,7 @@ Route::get('/',function(){
 	return view('admin.master');
 });
 
-Route::resource('users', 'UserController');
+Route::prefix('admin')->group(function() {
+	Route::resource('users','UserController');
+	Route::resource('tickets','TicketController');
+});
