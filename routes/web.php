@@ -21,8 +21,6 @@ Route::get('/main', function(){
 
 Auth::routes();
 
-Route::get('/home', 'UserController@index')->name('home');
-
 Route::group(['prefix' => 'admin'], function () {
     Route::resource('tickets', 'TicketController');
     Route::resource('users', 'UserController');
