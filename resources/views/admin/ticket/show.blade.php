@@ -39,7 +39,45 @@
     </div>
     <!-- /.col-lg-12 -->
 </div>
-<!-- /.container-fluid -->
+
+<div class="row">
+    <div class="col-md-8">
+      <div class="page-header">
+        <h1> Comments </h1>
+      </div> 
+       <div class="comments-list">
+           <div class="media">
+                <a class="media-left" href="#"></a>
+                @foreach($comments as $comment)
+                <div class="col-sm-12 media-body">
+                      <h4 class="media-heading user_name">{{ $comment->user->name }}</h4>
+                      <span>{{ $comment->content }}     
+                  <small>
+                    <form action ="{{ route('comments.destroy', $comment->id) }}" method = 'POST'>
+                      <button type="submit">Delete</button>
+                        {{ csrf_field() }}
+                        {{ method_field('DELETE') }}
+                    </form>    
+                  </small>
+
+                </div>
+                @endforeach
+              </div>
+       </div>
+        <div class="form-group">
+            <form action = "{{route('comments.store', $comment->id) }}" method = 'POST'>
+                <input type="content" name="content" class="form-control" id="content"></input>
+                <input type="hidden" name="post_id" class="form-control" value="{{ $ticket->id }}" id="content"></input>
+                <button type="submit">Post</button>
+                {{ csrf_field() }}
+                {{ method_field('POST') }}
+            </form>
+        </div>
+        
+    </div>
+</div>
+
+
 @endsection
 
 @section('footer')

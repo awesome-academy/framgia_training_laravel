@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Ticket;
+use App\Models\Comment;
 use Illuminate\Http\Request;
 use App\Http\Requests\TicketRequest;
+
 use Auth;
 
 class TicketController extends Controller
@@ -62,8 +64,9 @@ class TicketController extends Controller
     {
 
         $ticket = Ticket::find($id);
+        $comments = Comment::where('post_id', $id)->get();
 
-        return view('admin.ticket.show', compact('ticket'));
+        return view('admin.ticket.show', compact('ticket', 'comments'));
     }
 
     public function edit($id)

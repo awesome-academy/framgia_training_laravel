@@ -22,5 +22,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::prefix('admin')->group(function() {
 	Route::resource('users','UserController');
 	Route::resource('tickets', 'TicketController');
+	Route::resource('comments', 'CommentController');
 });
 
