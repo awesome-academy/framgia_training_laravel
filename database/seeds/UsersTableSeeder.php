@@ -19,6 +19,7 @@ class UsersTableSeeder extends Seeder
             DB::table('users')->insert([
                 'name' => $faker->name,
                 'email' => $faker->unique()->email,
+                'password' => str_random(10),
             ]);
         }
     }

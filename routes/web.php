@@ -15,6 +15,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/main', function(){
+    return view('admin.master');
+});
+
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'UserController@index')->name('home');
+
+Route::group(['prefix' => 'admin'], function () {
+    Route::resource('tickets', 'TicketController');
+    Route::resource('users', 'UserController');
+});
