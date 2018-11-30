@@ -12,5 +12,10 @@ return [
     'email' => 'Email',
     'action' => 'Action',
     'submit' => 'Submit',
+    'title' => 'Title',
+    'content' => 'Content',
+    'status' => 'Status',
+    'approved' => 'Approved',
+    'pending' => 'Pending',
 
 ];
