@@ -94,7 +94,7 @@
                             <a href="#"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                         </li>
                         <li>
-                            <a href=""><i class="fa fa-list fa-fw"></i> Tickets</a>
+                            <a href="{{ route('admin.tickets.index') }}"><i class="fa fa-list fa-fw"></i> Tickets</a>
                         </li>
                         <li>
                             <a href="{{ route('admin.users.index') }}"><i class="fa fa-list fa-fw"></i> Users</a>
