@@ -4,10 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\User;
-use App\Http\Requests\UserRequest;
+use App\Http\Requests\CommentRequest;
+use App\Models\Comment;
+use Auth;
 
-class UserController extends Controller
+class CommentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +17,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
-
-        return view('admin.user.list', compact('users'));
+        //
     }
 
     /**
@@ -28,28 +27,28 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('admin.user.create');
+        //
     }
 
-    /**
+     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    
-    public function store(UserRequest $request)
+    public function store(CommentRequest $request)
     {
-        User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => bcrypt($request->password)
+        $comment = Comment::create([
+            'content' => $request->content,
+            'post_id' => $request->ticket_id,
+            'user_id' => Auth::user()->id,
+            'status' => 1
         ]);
 
-        return redirect()->route('admin.users.index');
+        return redirect()->back();
     }
 
-    /**
+     /**
      * Display the specified resource.
      *
      * @param  int  $id
@@ -57,9 +56,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        $user = User::findorFail($id);
-
-        return view('admin.user.show', compact('user'));
+        //
     }
 
     /**
@@ -70,11 +67,9 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $user = User::findorFail($id);
-
-        return view('admin.user.edit', compact('user'));
+        //
     }
-
+     
     /**
      * Update the specified resource in storage.
      *
@@ -82,16 +77,11 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UserRequest $request, $id)
+    public function update(Request $request, $id)
     {
-        User::findorFail($id)->update([
-            'name' => $request->name,
-            'password' => bcrypt($request->password)
-        ]);
-
-        return redirect()->route('admin.users.index');
+        //
     }
-
+     
     /**
      * Remove the specified resource from storage.
      *
@@ -100,8 +90,8 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        User::destroy($id);
+        Comment::destroy($id);
 
-        return redirect()->route('admin.users.index');
+        return redirect()->back();
     }
 }
