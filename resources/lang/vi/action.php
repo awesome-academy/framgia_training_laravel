@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'show' => 'Show',
+    'show' => 'Xem',
     'edit' => 'Sửa',
     'delete' => 'Xóa',
     'question' => 'Bạn có chắc bạn muốn xóa mục này ?',
