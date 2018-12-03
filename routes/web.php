@@ -22,4 +22,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::namespace('Admin')->name('admin.')->middleware(['auth'])->prefix('admincp')->group(function(){
 	Route::get('/', 'HomeController@index')->name('dashboard');
 	Route::resource('users', 'UserController');
+	Route::resource('tickets', 'TicketController');
 });

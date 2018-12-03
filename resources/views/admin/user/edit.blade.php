@@ -24,24 +24,36 @@
                 <div class="form-group">
                     <label>{{ trans('user.name') }}: </label>
                     <input type="text" class="form-control" name="name" value="{{ $user->name }}">
-                    <p class="help-block"></p>
+                    @if ($errors->has('name'))
+                        <span class="text-danger" role="alert">
+                            <strong>{{ $errors->first('name') }}</strong>
+                        </span>
+                    @endif
                 </div>
 
                 <div class="form-group">
                     <label>Email: </label>
                     <input type="email" class="form-control" name="email" value="{{ $user->email }}">
-                    <p class="help-block"></p>
+                    @if ($errors->has('email'))
+                        <span class="text-danger" role="alert">
+                            <strong>{{ $errors->first('email') }}</strong>
+                        </span>
+                    @endif
                 </div>
 
                 <div class="form-group">
                     <label>{{ trans('user.password') }}: </label>
                     <input type="password" class="form-control" name="password">
-                    <p class="help-block"></p>
+                    @if ($errors->has('password'))
+                        <span class="text-danger" role="alert">
+                            <strong>{{ $errors->first('password') }}</strong>
+                        </span>
+                    @endif
                 </div>
 
                 <div class="form-group">
                     <label>{{ trans('user.passwordc') }}: </label>
-                    <input type="password" class="form-control" name="pasword_confirm">
+                    <input type="password" class="form-control" name="password_confirmation">
                 </div>
                 
                 <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> {{ trans('user.save') }}</button>

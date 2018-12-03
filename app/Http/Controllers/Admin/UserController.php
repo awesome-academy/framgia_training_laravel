@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
+use App\Http\Requests\UserRequest;
 
 class UserController extends Controller
 {
@@ -36,7 +37,8 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    
+    public function store(UserRequest $request)
     {
         User::create([
             'name' => $request->name,
@@ -80,11 +82,10 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UserRequest $request, $id)
     {
         User::findorFail($id)->update([
             'name' => $request->name,
-            'email' => $request->email,
             'password' => bcrypt($request->password)
         ]);
 
